@@ -1,0 +1,85 @@
+* {
+    /* Neutral glassmorphism — no color tint */
+    glass-bg:       rgba ( 255, 255, 255, 8 % );
+    glass-border:   rgba ( 255, 255, 255, 12 % );
+    text-col:       rgba ( 255, 255, 255, 90 % );
+    text-dim:       rgba ( 255, 255, 255, 50 % );
+    text-bright:    #ffffff;
+
+    font:   "FiraCode Nerd Font Mono 11";
+
+    background-color: transparent;
+    text-color:       @text-col;
+}
+
+window {
+    location:         center;
+    width:            560;
+    padding:          14;
+    border:           1px;
+    border-color:     @glass-border;
+    border-radius:    12;
+    background-color: rgba ( 0, 0, 0, 40 % );
+}
+
+mainbox {
+    children: [ inputbar, listview ];
+    spacing:  10;
+}
+
+inputbar {
+    children:         [ entry ];
+    padding:          10 14;
+    border:           1px;
+    border-color:     @glass-border;
+    border-radius:    10;
+    background-color: @glass-bg;
+}
+
+entry {
+    placeholder:       "Search...";
+    placeholder-color: @text-dim;
+    text-color:        @text-col;
+}
+
+listview {
+    lines:          6;
+    fixed-height:   true;
+    padding:        0;
+}
+
+element {
+    padding:          8 14;
+    spacing:          12;
+    border-radius:    10;
+}
+
+element-icon {
+    size:             28px;
+    cursor:           inherit;
+}
+
+element-text {
+    text-color:       @text-col;
+}
+
+element selected {
+    background-color: @glass-bg;
+    border:           1px;
+    border-color:     @glass-border;
+}
+
+element-text selected {
+    text-color: @text-bright;
+}
+
+element-icon selected {
+    text-color: inherit;
+}
+
+scrollbar {
+    width:        4;
+    border:       0;
+    handle-width: 4;
+    handle-color: @glass-border;
+}

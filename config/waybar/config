@@ -1,0 +1,123 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "height": 42,
+    "spacing": 8,
+    "modules-left": [
+        "cpu",
+        "memory",
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "pulseaudio",
+        "backlight",
+        "custom/powerinfo",
+        "bluetooth",
+        "custom/recording",
+        "custom/power"
+    ],
+
+    // --- MODULE CONFIGURATIONS ---
+
+    "cpu": {
+        "interval": 2,
+        "format": "󰍛 {usage}%",
+        "tooltip": false
+    },
+
+    "memory": {
+        "interval": 5,
+        "format": "󰘚 {percentage}%",
+        "tooltip": true,
+        "tooltip-format": "{used:0.1f}G / {total:0.1f}G used"
+    },
+
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{name}"
+    },
+
+    "hyprland/window": {
+        "max-length": 60,
+        "separate-outputs": true,
+        "tooltip": false
+    },
+
+    "tray": {
+        "icon-size": 20,
+        "spacing": 10,
+        "show-passive-items": true
+    },
+
+    "pulseaudio": {
+        "scroll-step": 5,
+        "format": "{icon} {volume}%",
+        "format-muted": "󰝟",
+        "format-bluetooth": "󰂰 {volume}%",
+        "format-bluetooth-muted": "󰂲",
+        "format-icons": {
+            "headphone": "󰋋",
+            "headset": "󰋎",
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "tooltip": false
+    },
+
+    "bluetooth": {
+        "format": "󰂯",
+        "format-connected": "󰂱",
+        "format-disabled": "󰂲",
+        "on-click": "blueman-manager",
+        "tooltip": false
+    },
+
+    "backlight": {
+        "format": "{icon} {percent}%",
+        "format-icons": ["󰃞", "󰃟", "󰃠"],
+        "on-scroll-up": "brightnessctl set +1%",
+        "on-scroll-down": "brightnessctl set 1%-",
+        "tooltip": false
+    },
+
+    "custom/powerinfo": {
+        "exec": "~/.config/waybar/scripts/power_info.sh",
+        "return-type": "json",
+        "interval": 3
+    },
+
+    "custom/recording": {
+        "exec-if": "pgrep -x wf-recorder >/dev/null",
+        "exec": "~/.config/waybar/scripts/recording_status.sh",
+        "return-type": "json",
+        "interval": 1,
+        "on-click": "killall -s SIGINT wf-recorder",
+        "tooltip": true
+    },
+
+    "custom/power": {
+        "format": "⏻",
+        "tooltip": true,
+        "tooltip-format": "Left click: Lock\nMiddle click: Restart\nRight click: Shut down",
+        "on-click": "hyprlock",
+        "on-click-middle": "systemctl reboot",
+        "on-click-right": "systemctl poweroff"
+    },
+
+    // Single clock (PH time)
+    "clock": {
+        "interval": 60,
+        "timezone": "Asia/Manila",
+        "format": "{:%I:%M %p - %A}",
+        "format-alt": "{:%B %d, %Y}",
+        "tooltip": false,
+        "on-click-middle": "pkill wvkbd-mobintl || wvkbd-mobintl -L 300 &",
+        "actions": {
+            "on-click-right": "mode"
+        }
+    }
+}

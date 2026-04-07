@@ -1,0 +1,141 @@
+@define-color base #1e1e2e;
+@define-color mantle #181825;
+@define-color surface0 #313244;
+@define-color text #cdd6f4;
+@define-color blue #89b4fa;
+@define-color yellow #f9e2af;
+@define-color red #f38ba8;
+
+@define-color pill_bg alpha(@surface0, 0.40);
+@define-color pill_border alpha(@text, 0.07);
+@define-color pill_shadow alpha(@mantle, 0.45);
+
+* {
+    font-family: "FiraCode Nerd Font Mono", "Noto Color Emoji", monospace;
+    font-size: 15px;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: @text;
+    border: none;
+}
+
+window#waybar > box {
+    margin: 6px 6px;
+}
+
+tooltip {
+    background-color: rgba(0, 0, 0, 0.40);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+}
+
+tooltip label {
+    padding: 8px 10px;
+    color: rgba(255, 255, 255, 0.90);
+}
+
+#workspaces {
+    margin: 3px 5px;
+    padding: 2px;
+    background-color: @pill_bg;
+    border: 1px solid @pill_border;
+    border-radius: 12px;
+    box-shadow: 0 10px 26px @pill_shadow;
+}
+
+#workspaces button {
+    padding: 0 14px;
+    margin: 2px;
+    color: @text;
+    background: transparent;
+    border-radius: 10px;
+    transition: background-color 120ms ease, color 120ms ease;
+}
+
+#workspaces button.active {
+    background-color: @blue;
+    color: @base;
+}
+
+#workspaces button:hover {
+    background-color: alpha(@blue, 0.18);
+}
+
+#tray,
+#cpu,
+#memory,
+#pulseaudio,
+#bluetooth,
+#backlight,
+#custom-powerinfo,
+#custom-recording,
+#custom-power,
+#clock {
+    padding: 0 14px;
+    margin: 3px 3px;
+    background-color: @pill_bg;
+    border: 1px solid @pill_border;
+    border-radius: 12px;
+    box-shadow: 0 10px 26px @pill_shadow;
+}
+
+#custom-power {
+    color: rgba(255, 255, 255, 0.92);
+}
+
+#custom-power:hover {
+    background-color: alpha(@red, 0.18);
+    border-color: alpha(@red, 0.22);
+}
+
+#custom-recording {
+    color: @base;
+    background-color: alpha(@red, 0.85);
+    border-color: alpha(@red, 0.45);
+    font-weight: 700;
+}
+
+#custom-recording:hover {
+    background-color: alpha(@red, 0.70);
+    border-color: alpha(@red, 0.35);
+}
+
+#custom-recording.recording {
+    animation-name: recording-pulse;
+    animation-duration: 0.9s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#custom-powerinfo.warning {
+    color: @yellow;
+}
+
+#custom-powerinfo.critical {
+    color: @red;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    to {
+        background-color: alpha(@red, 0.55);
+        color: @base;
+    }
+}
+
+@keyframes recording-pulse {
+    to {
+        background-color: alpha(@red, 0.60);
+        border-color: alpha(@red, 0.25);
+    }
+}

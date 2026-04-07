@@ -1,0 +1,26 @@
+[general]
+# Save directly to your Pictures folder
+output-filename = "~/Pictures/Screenshots/screenshot-%Y%m%d-%H%M%S.png"
+# Start with the arrow tool selected
+initial-tool = "arrow"
+# Copy to clipboard instantly when saving
+copy-command = "wl-copy"
+# Close Satty after copying/saving
+early-exit = true
+
+[font]
+# Use your sharp coding font for text annotations
+family = "JetBrainsMono Nerd Font"
+style = "Bold"
+
+[color-palette]
+# Define your custom colors for drawing
+custom = [
+    "#f38ba8", # Red
+    "#a6e3a1", # Green
+    "#89b4fa", # Blue
+    "#f9e2af", # Yellow
+    "#cba6f7", # Purple
+    "#1e1e2e", # Dark Background
+    "#cdd6f4", # Light Text
+]

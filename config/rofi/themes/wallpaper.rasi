@@ -1,0 +1,84 @@
+* {
+    /* Neutral glassmorphism — no color tint */
+    glass-bg:       rgba ( 255, 255, 255, 8 % );
+    glass-border:   rgba ( 255, 255, 255, 12 % );
+    text-col:       rgba ( 255, 255, 255, 90 % );
+    text-dim:       rgba ( 255, 255, 255, 50 % );
+    text-bright:    #ffffff;
+
+    font:   "FiraCode Nerd Font Mono 11";
+
+    background-color: transparent;
+    text-color:       @text-col;
+}
+
+window {
+    location:         center;
+    anchor:           center;
+    width:            100%;
+    height:           220px;
+    padding:          0;
+    border:           0;
+    border-radius:    0;
+    background-color: rgba ( 0, 0, 0, 40 % );
+}
+
+mainbox {
+    children:         [ listview ];
+    spacing:          0;
+    padding:          0;
+}
+
+listview {
+    lines:            1;
+    columns:          5;
+    fixed-height:     true;
+    fixed-columns:    false;
+    scrollbar:        false;
+    cycle:            true;
+    spacing:          8px;
+    padding:          20px;
+}
+
+element {
+    orientation:      vertical;
+    children:         [ element-icon, element-text ];
+    padding:          8px;
+    border:           1px;
+    border-color:     transparent;
+    border-radius:    12px;
+    spacing:          6px;
+    cursor:           pointer;
+}
+
+element-icon {
+    size:             140px;
+    border-radius:    10px;
+    cursor:           inherit;
+}
+
+element-text {
+    horizontal-align: 0.5;
+    vertical-align:   0.5;
+    text-color:       @text-dim;
+    cursor:           inherit;
+    font:             "FiraCode Nerd Font Mono 9";
+}
+
+element selected {
+    border-color:     @glass-border;
+    background-color: @glass-bg;
+}
+
+element-icon selected {
+    border-radius:    10px;
+}
+
+element-text selected {
+    text-color: @text-bright;
+}
+
+scrollbar {
+    handle-width: 0;
+    width:        0;
+}
