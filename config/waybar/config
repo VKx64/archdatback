@@ -1,12 +1,13 @@
 {
     "layer": "top",
     "position": "bottom",
-    "height": 42,
+    "height": 54,
     "spacing": 8,
     "modules-left": [
         "cpu",
         "memory",
-        "hyprland/workspaces"
+        "hyprland/workspaces",
+        "wlr/taskbar"
     ],
     "modules-center": [
         "clock"
@@ -14,9 +15,9 @@
     "modules-right": [
         "pulseaudio",
         "backlight",
-        "custom/powerinfo",
         "bluetooth",
         "custom/recording",
+        "custom/layout",
         "custom/power"
     ],
 
@@ -84,10 +85,12 @@
         "tooltip": false
     },
 
-    "custom/powerinfo": {
-        "exec": "~/.config/waybar/scripts/power_info.sh",
-        "return-type": "json",
-        "interval": 3
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-size": 18,
+        "tooltip-format": "{title}",
+        "on-click": "activate",
+        "on-click-middle": "close"
     },
 
     "custom/recording": {
@@ -96,6 +99,14 @@
         "return-type": "json",
         "interval": 1,
         "on-click": "killall -s SIGINT wf-recorder",
+        "tooltip": true
+    },
+
+    "custom/layout": {
+        "exec": "~/.config/waybar/scripts/global_layout.sh",
+        "return-type": "json",
+        "interval": 1,
+        "on-click": "~/.config/waybar/scripts/global_layout.sh toggle",
         "tooltip": true
     },
 

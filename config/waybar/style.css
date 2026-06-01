@@ -39,7 +39,8 @@ tooltip label {
     color: rgba(255, 255, 255, 0.90);
 }
 
-#workspaces {
+#workspaces,
+#taskbar {
     margin: 3px 5px;
     padding: 2px;
     background-color: @pill_bg;
@@ -48,7 +49,8 @@ tooltip label {
     box-shadow: 0 10px 26px @pill_shadow;
 }
 
-#workspaces button {
+#workspaces button,
+#taskbar button {
     padding: 0 14px;
     margin: 2px;
     color: @text;
@@ -66,14 +68,22 @@ tooltip label {
     background-color: alpha(@blue, 0.18);
 }
 
+#taskbar button:hover {
+    background-color: alpha(@text, 0.08);
+}
+
+#taskbar button.active {
+    background-color: alpha(@text, 0.15);
+}
+
 #tray,
 #cpu,
 #memory,
 #pulseaudio,
 #bluetooth,
 #backlight,
-#custom-powerinfo,
 #custom-recording,
+#custom-layout,
 #custom-power,
 #clock {
     padding: 0 14px;
@@ -91,6 +101,22 @@ tooltip label {
 #custom-power:hover {
     background-color: alpha(@red, 0.18);
     border-color: alpha(@red, 0.22);
+}
+
+#custom-layout {
+    transition: background-color 120ms ease;
+}
+
+#custom-layout:hover {
+    background-color: alpha(@text, 0.1);
+}
+
+#custom-layout.floating {
+    color: @blue;
+}
+
+#custom-layout.none {
+    color: alpha(@text, 0.3);
 }
 
 #custom-recording {
@@ -113,18 +139,7 @@ tooltip label {
     animation-direction: alternate;
 }
 
-#custom-powerinfo.warning {
-    color: @yellow;
-}
 
-#custom-powerinfo.critical {
-    color: @red;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
 
 @keyframes blink {
     to {
